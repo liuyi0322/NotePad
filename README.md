@@ -35,20 +35,36 @@
 主要通过以下代码对数据表中的数据进行查询
 
 public boolean onQueryTextChange(String string) {
+
         String selection1 = NotePad.Notes.COLUMN_NAME_TITLE+" like ? or "+NotePad.Notes.COLUMN_NAME_NOTE+" like ?";
+        
         String[] selection2 = {"%"+string+"%","%"+string+"%"};
+        
         Cursor cursor = sqLiteDatabase.query(
+        
                 NotePad.Notes.TABLE_NAME,
+                
                 PROJECTION, 
+                
                 selection1, 
+                
                 selection2, 
-                null,          
-                null,         
+                
+                null,     
+                
+                null,        
+                
                 NotePad.Notes.DEFAULT_SORT_ORDER 
+                
         );
+        
         String[] dataColumns = {
+        
                 NotePad.Notes.COLUMN_NAME_TITLE,
+                
                 NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
+                
+        };
 
 #### 然后在NoteList类中的onOptionsItemSelected方法中添加search查询的处理(跳转)
 
