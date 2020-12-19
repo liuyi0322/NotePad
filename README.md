@@ -3,4 +3,6 @@
 
 ## 首先是主页面
 ![img1](https://github.com/liuyi0322/NotePad/blob/master/img/%E4%B8%BB%E9%A1%B5%E9%9D%A2.png)
+## 通过右上角的菜单中有可以新建new note
+
 
