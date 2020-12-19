@@ -17,8 +17,11 @@
         android:gravity="center_vertical"
 />
 然后修改时间戳的格式为yy.MM.dd HH:mm:ss
+
 再在创建数据表和列的投影PROJECTION中添加上修改时间即可
+
 效果如下
+
 ![img3](https://github.com/liuyi0322/NotePad/blob/master/img/时间戳.png)
 
 ## 下面是在该NotePad中实现搜索笔记功能
