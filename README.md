@@ -1,2 +1,5 @@
-# NotePad
-This is an AndroidStudio rebuild of google SDK sample NotePad
+# 这是一个我完成的期中项目———NotePad
+这里我将会说明我的NotePad实现的一些功能和使用方法
+##首先是主页面
+
+
