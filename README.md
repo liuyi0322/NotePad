@@ -32,9 +32,9 @@
 #### 首先我们应该在菜单的.xml文件中添加一个搜索图标
 
 #### 然后新建一个实现SearchView.OnQueryTextListener接口的NoteSearch的Activity和其对应的布局文件来实现搜索功能
-主要通过以下代码对数据表中的数据进行查询
+主要通过以下方法对数据表中的数据进行查询
 
-public boolean onQueryTextChange(String string) {
+      public boolean onQueryTextChange(String string) {
 
         String selection1 = NotePad.Notes.COLUMN_NAME_TITLE+" like ? or "+NotePad.Notes.COLUMN_NAME_NOTE+" like ?";
         
@@ -65,6 +65,23 @@ public boolean onQueryTextChange(String string) {
                 NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
                 
         };
+        int[] viewIDs = {
+                android.R.id.text1,
+                android.R.id.text2
+        };
+        // Creates the backing adapter for the ListView.
+        SimpleCursorAdapter adapter
+                = new SimpleCursorAdapter(
+                this,                             // The Context for the ListView
+                R.layout.noteslist_item,         // Points to the XML for a list item
+                cursor,                           // The cursor to get items from
+                dataColumns,
+                viewIDs
+        );
+        // Sets the ListView's adapter to be the cursor adapter that was just created.
+        listView.setAdapter(adapter);
+        return true;
+    }
 
 #### 然后在NoteList类中的onOptionsItemSelected方法中添加search查询的处理(跳转)
 
