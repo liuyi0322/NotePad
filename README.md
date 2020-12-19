@@ -5,7 +5,9 @@
 ![img1](https://github.com/liuyi0322/NotePad/blob/master/img/%E4%B8%BB%E9%A1%B5%E9%9D%A2.png)
 ## 通过右上角的菜单中有可以新建note和搜索等功能
 ![img2](https://github.com/liuyi0322/NotePad/blob/master/img/菜单.png)
+
 ![img5](https://github.com/liuyi0322/NotePad/blob/master/img/新建note.png)
+
 ## 下面是每条笔记生成的同时生成时间戳
 
 在noteslist_item的布局文件里添加一个TextView来显示时间戳
@@ -27,13 +29,30 @@
 
 ## 下面是在该NotePad中实现搜索笔记的功能
 
-首先我们应该在菜单的.xml文件中添加一个搜索图标和
+#### 首先我们应该在菜单的.xml文件中添加一个搜索图标
 
-然后新建一个实现SearchView.OnQueryTextListener接口的NoteSearch的Activity和其对应的布局文件来实现搜索功能
+#### 然后新建一个实现SearchView.OnQueryTextListener接口的NoteSearch的Activity和其对应的布局文件来实现搜索功能
+主要通过以下代码对数据表中的数据进行查询
 
-然后在NoteList类中的onOptionsItemSelected方法中添加search查询的处理(跳转)
+public boolean onQueryTextChange(String string) {
+        String selection1 = NotePad.Notes.COLUMN_NAME_TITLE+" like ? or "+NotePad.Notes.COLUMN_NAME_NOTE+" like ?";
+        String[] selection2 = {"%"+string+"%","%"+string+"%"};
+        Cursor cursor = sqLiteDatabase.query(
+                NotePad.Notes.TABLE_NAME,
+                PROJECTION, 
+                selection1, 
+                selection2, 
+                null,          
+                null,         
+                NotePad.Notes.DEFAULT_SORT_ORDER 
+        );
+        String[] dataColumns = {
+                NotePad.Notes.COLUMN_NAME_TITLE,
+                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
 
-搜索功能实现截图：
+#### 然后在NoteList类中的onOptionsItemSelected方法中添加search查询的处理(跳转)
+
+#### 搜索功能实现截图：
 
 ![img4](https://github.com/liuyi0322/NotePad/blob/master/img/搜索.png)
 
